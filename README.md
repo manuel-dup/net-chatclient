@@ -1,1 +1,1 @@
-# My project's README
+# Project for "Numérique Égalité Tour"
