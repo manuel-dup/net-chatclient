@@ -1,0 +1,17 @@
+#conversation {
+    border: 1px solid rgb(158, 158, 158);
+    height: 50vh;
+    padding: 3px;
+}
+
+.col.message-time {
+    padding-right: 3px;
+    color: rgb(158, 158, 158);
+}
+.col.message-content {
+    padding-left: 0;
+}
+
+#send-message {
+    padding: 0 1.5rem;
+}
