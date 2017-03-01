@@ -4,6 +4,10 @@
     padding: 3px;
 }
 
+#conversation > .row {
+    margin-bottom: 0px;
+}
+
 .col.message-time {
     padding-right: 3px;
     color: rgb(158, 158, 158);
@@ -14,4 +18,31 @@
 
 #send-message {
     padding: 0 1.5rem;
+}
+
+.input-field > .prefix {
+    padding-top: 10px;
+    opacity: 0.6;
+}
+
+.input-field > .prefix.active {
+    opacity: 1;
+}
+
+.avatar {
+    height: 23px;
+    margin-right: 5px;
+    opacity: 0.6;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: 1px 1px;
+    background-size: 20px auto;
+}
+
+.avatar.bot {
+    background-image: url("/img/bot.png");
+}
+
+.avatar.human {
+    background-image: url("/img/human.png");
 }
