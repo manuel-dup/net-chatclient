@@ -40,9 +40,9 @@
 }
 
 .avatar.bot {
-    background-image: url("/img/bot.png");
+    background-image: url("../img/bot.png");
 }
 
 .avatar.human {
-    background-image: url("/img/human.png");
+    background-image: url("../img/human.png");
 }
