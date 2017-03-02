@@ -2,10 +2,12 @@
     border: 1px solid rgb(158, 158, 158);
     height: 50vh;
     padding: 3px;
+    overflow: auto;
 }
 
 #conversation > .row {
     margin-bottom: 0px;
+    margin-right: 0px;
 }
 
 .col.message-time {
