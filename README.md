@@ -11,3 +11,4 @@ And check http://localhost:8580/chat/
 
 1. Move it to a Maven project
 2. Ship the app into a Docker image
+
