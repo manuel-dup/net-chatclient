@@ -1,5 +1,4 @@
-# Project for "Numérique Égalité Tour"
-
+# Simple chat client
 
 ### Run the project
 After cloning the repository, go in your local working copy, then
