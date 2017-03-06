@@ -1,0 +1,86 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.eptica.numegtour</groupId>
+    <artifactId>chatclient</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+<!--         <resources> -->
+<!--             <resource> -->
+<!--                 <directory>src/main/resources/www</directory> -->
+<!--                 <targetPath>${project.build.directory}/www</targetPath> -->
+<!--             </resource> -->
+<!--         </resources> -->
+        
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                        <inherited>false</inherited>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.13</version>
+                <configuration>
+                    <imageName>registry.eptica.com/eptica/numegtour-chatclient</imageName>
+                    <imageTags>
+                        <imageTag>${project.version}</imageTag>
+                    </imageTags>
+                    <forceTags>true</forceTags>
+                    <baseImage>nginx</baseImage>
+                    <serverId>registry-eptica</serverId>
+                    <registryUrl>https://registry.eptica.com/v2/</registryUrl>
+                    <pushImage>false</pushImage>
+
+                    <exposes>
+                        <expose>80</expose>
+                    </exposes>
+
+                    <resources>
+                        <resource>
+                            <directory>${project.build.directory}/</directory>
+                            <targetPath>/etc/nginx/</targetPath>
+                            <include>nginx.conf</include>
+                        </resource>
+                        <resource>
+                            <directory>${project.build.directory}/www/</directory>
+                            <targetPath>/var/www/</targetPath>
+                        </resource>
+                    </resources>
+                    
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

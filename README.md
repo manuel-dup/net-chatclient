@@ -3,12 +3,20 @@
 ### Run the project
 After cloning the repository, go in your local working copy, then
 ```sh
-docker run --rm --name netproject -v ${PWD}/app:/usr/share/nginx/html/chat:ro -p 8580:80 nginx
+# Build
+mvn clean install
+
+# Run Docker image
+docker run --name netproject-chatclient --rm -p 8580:80 registry.eptica.com/eptica/numegtour-chatclient
 ```
-And check http://localhost:8580/chat/
+And check http://localhost:8580/ (or http://localhost:8580/chatclient)
 
-### Next step
 
-1. Move it to a Maven project
-2. Ship the app into a Docker image
+### Develop in the project
 
+Run the Docker image with the following command:
+```sh
+# in 'chatclient' project
+docker run --name netproject-chatclient --rm -p 8580:80 -v ${PWD}/src/main/resources/www:/var/www:ro registry.eptica.com/eptica/numegtour-chatclient
+# nginx will serve the sources instead of what is inside the Docker container
+```
