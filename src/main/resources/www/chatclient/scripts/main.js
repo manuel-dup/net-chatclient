@@ -7,6 +7,10 @@
     const HUMAN = {class: "human"};
     var RUNNING = false;
 
+    var now = function() {
+        return new Date().toLocaleTimeString();
+    };
+
     var scrollConversationToBottom = function() {
         if (RUNNING) {
             var conversation = $('#conversation')[0];
@@ -15,6 +19,17 @@
                 $(conversation).stop().animate({scrollTop: height}, 500);
             }
         }
+    }
+    1
+    var buildChatPhrase = function(message, role) {
+        var time = $('<div></div>').addClass("col message-time").text("[" + now() + "]");
+        var avatar = $('<div></div>').addClass("col avatar").addClass(role.class);
+        var msg = $('<div></div>').addClass("col message-content").text(message);
+
+        return $('<div></div>').addClass("row")
+                .append(time)
+                .append(avatar)
+                .append(msg);
     }
 
     var addMessageToConversation = function(message, role) {
@@ -30,21 +45,6 @@
 
     var sendHumanMessage = function(message) {
         addMessageToConversation(message, HUMAN);
-    };
-
-    var buildChatPhrase = function(message, role) {
-        var time = $('<div></div>').addClass("col message-time").text("[" + now() + "]");
-        var avatar = $('<div></div>').addClass("col avatar").addClass(role.class);
-        var msg = $('<div></div>').addClass("col message-content").text(message);
-
-        return $('<div></div>').addClass("row")
-                .append(time)
-                .append(avatar)
-                .append(msg);
-    }
-
-    var now = function() {
-        return new Date().toLocaleTimeString();
     };
 
     var sendEnteredMessage = function() {
