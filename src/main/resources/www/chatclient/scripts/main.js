@@ -1,14 +1,16 @@
 "use strict";
 
 (function() {
-    console.log("Loading chat...");
-
-    const BOT = {class: "bot"};
-    const HUMAN = {class: "human"};
     var RUNNING = false;
+
+    var nickname = localStorage.getItem("nickname");
 
     var now = function() {
         return new Date().toLocaleTimeString();
+    };
+
+    var setNickname = function(nickname) {
+       $('#nickname').text(nickname);
     };
 
     var scrollConversationToBottom = function() {
@@ -19,39 +21,50 @@
                 $(conversation).stop().animate({scrollTop: height}, 500);
             }
         }
-    }
-    1
-    var buildChatPhrase = function(message, role) {
+    };
+
+    var buildChatPhrase = function(message) {
         var time = $('<div></div>').addClass("col message-time").text("[" + now() + "]");
-        var avatar = $('<div></div>').addClass("col avatar").addClass(role.class);
+        var nick = $('<div></div>').addClass("col message-nickname").text(nickname + ":");
         var msg = $('<div></div>').addClass("col message-content").text(message);
 
         return $('<div></div>').addClass("row")
                 .append(time)
-                .append(avatar)
+                .append(nick)
                 .append(msg);
-    }
-
-    var addMessageToConversation = function(message, role) {
-        if (typeof message !== 'undefined' && message.length > 0) {
-            $('#conversation').append(buildChatPhrase(message, role));
-            scrollConversationToBottom();
-        }
-    }
-
-    var sendBotMessage = function(message) {
-        addMessageToConversation(message, BOT);
     };
 
-    var sendHumanMessage = function(message) {
-        addMessageToConversation(message, HUMAN);
+    var addMessageToConversation = function(message) {
+        if (typeof message !== 'undefined' && message.length > 0) {
+            $('#conversation').append(buildChatPhrase(message));
+            scrollConversationToBottom();
+        }
     };
 
     var sendEnteredMessage = function() {
-        sendHumanMessage($('#message').val());
+        addMessageToConversation($('#message').val());
         $('#message').val("");
-    }
+    };
 
+    var updateNickname = function() {
+        var newNickname = $('#user-nickname').val();
+
+        if (typeof newNickname !== 'undefined'
+            && newNickname.length > 0 && newNickname.length <= 10)
+        {
+            $('#user-nickname').removeClass("invalid");
+            localStorage.setItem("nickname", newNickname);
+
+            nickname = localStorage.getItem("nickname");
+            setNickname(nickname);
+
+            $('#user-info').modal('close');
+        } else {
+            $('#user-nickname').addClass("invalid");
+        }
+    };
+
+    $('#user-info-submit').click(updateNickname);
     $('#send-message').click(sendEnteredMessage);
     $('#message').keyup(function(event) {
         // when pressing "Enter"
@@ -59,9 +72,14 @@
             sendEnteredMessage();
         }
     });
+    $('.modal').modal();
 
-    sendBotMessage("Hello I'm a bot");
-    sendHumanMessage("Hello I'm a human");
+    if (nickname === null || nickname.length <= 0) {
+        $('#user-info').modal('open');
+    } else {
+        setNickname(nickname);
+    }
+
     RUNNING = true;
     scrollConversationToBottom();
 })();

@@ -14,20 +14,38 @@
         <div class="container">
             <h4 class="header">Chat</h4>
 
+            <div id="user-info" class="modal">
+                <div class="modal-content">
+                    <p>C'est votre première visite, choisissez un pseudo (max. 10 caractères)</p>
+                    <div class="col s12">
+                        <div class="row">
+                            <div class="input-field col s8 offset-s2">
+                                <input id="user-nickname" type="text">
+                                <label for="user-nickname">Pseudo</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a id="user-info-submit" class="waves-effect waves-green btn-flat">OK</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
             <div class="row">
                 <div class="col m10 offset-m1 l6 offset-l3">
                     <div id="conversation"></div>
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col m9 offset-m1 l5 offset-l3">
-                    <i class="material-icons prefix">chat</i>
+                <div id="nickname-wrapper" class="col s1 offset-m1 offset-l3 center input-field">
+                    <div id="nickname" class="chip">???</div>
+                </div>
+                <div class="input-field col m9 l4">
                     <input type="text" id="message">
                     <label for="message">Message</label>
                 </div>
                 <div class="input-field col m1">
                     <a id="send-message" class="waves-effect waves-light btn right"><i class="material-icons">send</i></a>
-
                 </div>
             </div>
         </div>

@@ -31,6 +31,25 @@
     opacity: 1;
 }
 
+#user-info.modal {
+    width: 33%;
+}
+
+#nickname {
+    margin-top: 10px;
+    width: 100%
+}
+
+#nickname-wrapper {
+    padding: 0px;
+}
+
+.row .col.message-nickname {
+    padding: 0 .25rem 0 .1rem;
+    color: rgb(0,156,179);
+}
+
+/*
 .avatar {
     height: 23px;
     margin-right: 5px;
@@ -48,3 +67,4 @@
 .avatar.human {
     background-image: url("../img/human.png");
 }
+*/
