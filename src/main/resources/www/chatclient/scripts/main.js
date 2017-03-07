@@ -94,7 +94,7 @@
             sendEnteredMessage();
         }
     });
-    $('.modal').modal();
+    $('#user-info.modal').modal({dismissible: false});
     $('#reset-app').click(function() {
         localStorage.clear();
         document.location.reload();
