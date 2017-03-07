@@ -86,6 +86,14 @@
         setNbPersons(data.nbPersons);
     };
 
+    var initializeConversation = function(history) {
+        var length = history.length;
+        for (var i = 0 ; i < length ; i++) {
+            $('#conversation').append(buildChatPhrase(history[i]));
+        }
+        scrollConversationToBottom();
+    };
+
     $('#user-info-submit').click(updateNickname);
     $('.send-message').click(sendEnteredMessage);
     $('#message').keyup(function(event) {
@@ -131,11 +139,14 @@
 
 
         } else if (data.type === 'message') {
-            $('#conversation').append(buildChatPhrase(data));
+            $('#conversation').append(buildChatPhrase(data.message));
             scrollConversationToBottom();
 
         } else if (data.type === 'leaver') {
             someoneLeft(data);
+
+        } else if (data.type === 'history') {
+            initializeConversation(data.history);
 
         } else {
             console.log("Unknown message type", data.type);
