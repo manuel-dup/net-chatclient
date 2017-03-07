@@ -62,6 +62,7 @@
 
             nickname = localStorage.getItem("nickname");
             setNickname(nickname);
+            $('#user-nickname').text("");
 
             $('#user-info').modal('close');
         } else {
@@ -93,7 +94,9 @@
         }
     });
     $('.modal').modal();
-
+    $('#reset-app').click(function() {
+        localStorage.clear();
+    });
 
     // ------------- WebSocket stuff -------------
 

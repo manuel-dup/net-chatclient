@@ -55,3 +55,8 @@
     font-weight: bold;
 }
 
+#reset-app {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
