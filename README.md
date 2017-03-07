@@ -7,7 +7,7 @@ After cloning the repository, go in your local working copy, then
 mvn clean install
 
 # Run Docker image
-docker run --name netproject-chatclient --rm -p 8580:80 registry.eptica.com/eptica/numegtour-chatclient
+docker run --rm --name netproject-chatclient -p 8580:80 registry.eptica.com/eptica/numegtour-chatclient
 ```
 And check http://localhost:8580/ (or http://localhost:8580/chatclient)
 

@@ -158,7 +158,7 @@
         console.log("Error", error.eventPhase, error);
     }
 
-    socket.onclose = function(close) {
+    socket.onclose = function() {
         console.log("Server closed connection");
     }
 
