@@ -18,7 +18,7 @@
     padding-left: 0;
 }
 
-#send-message {
+.send-message.btn {
     padding: 0 1.5rem;
 }
 
@@ -31,8 +31,10 @@
     opacity: 1;
 }
 
-#user-info.modal {
-    width: 33%;
+@media (min-width: 1400px) {
+    .modal {
+        width: 33%;
+    }
 }
 
 #nickname {

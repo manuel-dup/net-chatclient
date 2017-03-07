@@ -65,7 +65,7 @@
     };
 
     $('#user-info-submit').click(updateNickname);
-    $('#send-message').click(sendEnteredMessage);
+    $('.send-message').click(sendEnteredMessage);
     $('#message').keyup(function(event) {
         // when pressing "Enter"
         if (event.which === 13) {
