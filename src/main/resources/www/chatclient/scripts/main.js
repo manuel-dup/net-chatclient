@@ -140,6 +140,11 @@
         }
     }
 
+    socket.onerror = function(error){
+        Materialize.toast('Impossible de se connecter au serveur de chat', 4000);
+        console.log("Error", error.eventPhase, error);
+    }
+
     socket.onclose = function(close) {
         console.log("Server closed connection");
     }
