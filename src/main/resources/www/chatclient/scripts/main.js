@@ -125,8 +125,7 @@
         scrollConversationToBottom();
     }
 
-
-    socket.onmessage = function(msg){
+    var handleServerMessage =  function(msg){
         console.log("Received message: '" + msg.data + "'");
         var data = JSON.parse(msg.data);
         if (data.type === 'welcome') {
@@ -151,7 +150,9 @@
         } else {
             console.log("Unknown message type", data.type);
         }
-    }
+    };
+
+    socket.onmessage = handleServerMessage;
 
     socket.onerror = function(error){
         Materialize.toast('Impossible de se connecter au serveur de chat', 4000);
