@@ -17,6 +17,8 @@ And check http://localhost:8580/ (or http://localhost:8580/chatclient)
 Run the Docker image with the following command:
 ```sh
 # in 'chatclient' project
-docker run --name netproject-chatclient --rm -p 8580:80 -v ${PWD}/src/main/resources/www:/var/www:ro registry.eptica.com/eptica/numegtour-chatclient
+docker run --name netproject-chatclient --rm -p 8580:80 \
+        -v ${PWD}/src/main/resources/www:/var/www:ro \
+        registry.eptica.com/eptica/numegtour-chatclient
 # nginx will serve the sources instead of what is inside the Docker container
 ```
