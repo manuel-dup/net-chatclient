@@ -13,13 +13,6 @@
     </properties>
 
     <build>
-<!--         <resources> -->
-<!--             <resource> -->
-<!--                 <directory>src/main/resources/www</directory> -->
-<!--                 <targetPath>${project.build.directory}/www</targetPath> -->
-<!--             </resource> -->
-<!--         </resources> -->
-        
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -70,8 +63,8 @@
                             <targetPath>/var/www/</targetPath>
                         </resource>
                     </resources>
-                    
                 </configuration>
+                
                 <executions>
                     <execution>
                         <phase>package</phase>
