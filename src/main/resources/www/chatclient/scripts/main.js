@@ -20,7 +20,7 @@
         if (RUNNING) {
             var conversation = $('#conversation')[0];
             var height = conversation.scrollHeight;
-            if (conversation.scrollTop < conversation.scrollTopMax) {
+            if (conversation.scrollTop < height) {
                 $(conversation).stop().animate({scrollTop: height}, 500);
             }
         }
