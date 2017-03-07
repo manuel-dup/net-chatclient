@@ -38,12 +38,12 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.13</version>
                 <configuration>
-                    <imageName>registry.eptica.com/eptica/numegtour-chatclient</imageName>
+                    <imageName>registry.eptica.com/eptica/numegtour-${project.artifactId}</imageName>
                     <imageTags>
                         <imageTag>${project.version}</imageTag>
                     </imageTags>
                     <forceTags>true</forceTags>
-                    <baseImage>nginx</baseImage>
+                    <baseImage>nginx:alpine</baseImage>
                     <serverId>registry-eptica</serverId>
                     <registryUrl>https://registry.eptica.com/v2/</registryUrl>
                     <pushImage>false</pushImage>
