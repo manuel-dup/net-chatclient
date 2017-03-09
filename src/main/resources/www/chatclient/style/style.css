@@ -1,5 +1,5 @@
 #conversation {
-    border: 1px solid rgb(158, 158, 158);
+    border: 1px solid lightgrey;
     height: 50vh;
     padding: 3px;
     overflow: auto;
@@ -59,4 +59,13 @@
     position: absolute;
     top: 0px;
     left: 0px;
+}
+
+#participants {
+    border: 1px solid lightgrey;
+    height: 50vh;
+}
+
+#liste-participants > .participant::before {
+    content: "- ";
 }
