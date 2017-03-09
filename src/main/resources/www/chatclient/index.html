@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
 
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+        <link href="lib/materialize/materialize.min.css" rel="stylesheet">
+        <link href="style/materialicons.css" rel="stylesheet"/>
         <link href="style/style.css" rel="stylesheet"/>
 
         <title>Chat</title>
@@ -22,7 +22,7 @@
                     <span id="nb-personnes">?</span> personnes connectées
                 </div>
             </div>
-            
+
             <div id="user-info" class="modal">
                 <div class="modal-content">
                     <p>C'est votre première visite, choisissez un pseudo (max. 10 caractères)</p>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="row">
                 <div class="col s12 m10 offset-m1">
                     <div id="conversation"></div>
@@ -61,8 +61,8 @@
             <a class="send-message waves-effect waves-light btn btn-flat white-text" id="reset-app"><i class="material-icons">replay</i></a>
         </div>
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+        <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="lib/materialize/materialize.min.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
     </body>
 </html>
