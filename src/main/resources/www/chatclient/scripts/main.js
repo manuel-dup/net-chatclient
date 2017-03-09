@@ -110,7 +110,14 @@
 
     // ------------- WebSocket stuff -------------
 
-    socket = new WebSocket("ws://localhost:8581/");
+    var wsUrl;
+    if (location.hostname === 'herge3.eptica.com') {
+        wsUrl = "ws://herge3.eptica.com:28079/"
+    } else {
+        wsUrl = "ws://" + location.hostname + ":8581/"
+    }
+
+    socket = new WebSocket(wsUrl);
 
     socket.onopen = function(open){
         console.log("Socket has been opened with", open.target.url);
