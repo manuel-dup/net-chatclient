@@ -1,8 +1,6 @@
 "use strict";
 
 (function() {
-    var RUNNING = false;
-
     var socket;
     var uuid;
     var nickname = localStorage.getItem("nickname");
@@ -17,12 +15,10 @@
     };
 
     var scrollConversationToBottom = function() {
-        if (RUNNING) {
-            var conversation = $('#conversation')[0];
-            var height = conversation.scrollHeight;
-            if (conversation.scrollTop < height) {
-                $(conversation).stop().animate({scrollTop: height}, 500);
-            }
+        var conversation = $('#conversation')[0];
+        var height = conversation.scrollHeight;
+        if (conversation.scrollTop < height) {
+            $(conversation).stop().animate({scrollTop: height}, 500);
         }
     };
 
@@ -127,9 +123,6 @@
         } else {
             setNickname(nickname);
         }
-
-        RUNNING = true;
-        scrollConversationToBottom();
     }
 
     var handleServerMessage =  function(msg){
@@ -142,7 +135,6 @@
 
         } else if (data.type === 'newcomer') {
             someoneJoined(data);
-
 
         } else if (data.type === 'message') {
             $('#conversation').append(buildChatPhrase(data.message));
