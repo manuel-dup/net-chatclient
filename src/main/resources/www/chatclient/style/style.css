@@ -1,3 +1,9 @@
+#logo {
+    height: 40px;
+    float: right;
+    margin: 1.14rem 0 .912rem 0;
+}
+
 #conversation {
     border: 1px solid lightgrey;
     height: 50vh;
@@ -14,7 +20,16 @@
     padding-right: 3px;
     color: rgb(158, 158, 158);
 }
-.col.message-content {
+
+#conversation .mymessages,
+#conversation .othersmessages {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.col.message,
+.col.message-content
+{
     padding-left: 0;
 }
 
@@ -68,4 +83,89 @@
 
 #liste-participants > .participant::before {
     content: "- ";
+}
+
+@media (min-device-width : 320px) and (max-device-width : 800px) and (orientation: portrait),
+       (max-width: 800px) and (orientation: portrait)
+{
+    html {
+        font-size: 30px;
+    }
+    
+    #nickname {
+        font-size: 28px;
+        height: 50px;
+        border-radius: 20px;
+        padding-top: 8px;
+    }
+    
+    #nickname-wrapper {
+        margin-top: 45px;
+    }
+    
+    .container {
+        width: 100%;
+        height: auto;
+    }
+    
+    .send-message.btn {
+        height: 70px;
+        padding-top: 20px;
+        margin-top: 10px;
+    }
+}
+
+/* Screens lower than 700px */
+@media only screen and (min-device-width : 320px) and (max-device-width : 800px),
+       only screen and (max-width: 700px)
+{
+    #logo {
+        height: 45px;
+    }
+    
+    .mymessages > .col,
+    .othersmessages > .col {
+        border-width: 1px;
+        border-style: solid;
+        border-color: transparent;
+        border-radius: 4px;
+        padding: 0px;
+    }
+    
+    .col.mymessages {
+        float: right;
+    }
+    
+    .mymessages > .message-nickname {
+        display: none;
+    }
+    
+    .mymessages > .message-time {
+        float: right;
+    }
+    
+    .mymessages > .message-content {
+        border-color: RoyalBlue;
+        background-color: CornflowerBlue;
+    }
+    
+    .othersmessages > .message-content {
+        border-color: ForestGreen;
+        background-color: #35CF6C;
+    }
+    
+    #conversation .col {
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+    
+    #conversation .col.message-content {
+        padding-right: 5px;
+        padding-left: 5px;
+        color: white
+    }
+    
+    #conversation .row {
+        margin-left : 0
+    }
 }

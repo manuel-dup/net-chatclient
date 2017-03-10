@@ -27,10 +27,13 @@
         var nick = $('<div></div>').addClass("col message-nickname").text(message.from + ":");
         var msg = $('<div></div>').addClass("col message-content").text(message.text);
 
-        return $('<div></div>').addClass("row")
-                .append(time)
-                .append(nick)
-                .append(msg);
+        var msgClass = "col " + (message.from === nickname ? "mymessages": "othersmessages");
+
+        return $('<div></div>').addClass("row").append(
+                    $('<div></div>').addClass(msgClass)
+                        .append(time)
+                        .append(nick)
+                        .append(msg));
     };
 
     var addMessageToConversation = function(message) {
