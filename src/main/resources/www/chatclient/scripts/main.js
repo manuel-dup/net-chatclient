@@ -91,6 +91,13 @@
     };
 
     $('#user-info-submit').click(updateNickname);
+    $('#user-nickname').keyup(function(event) {
+        // when pressing "Enter"
+        if (event.which === 13) {
+            updateNickname();
+        }
+    });
+
     $('.send-message').click(sendEnteredMessage);
     $('#message').keyup(function(event) {
         // when pressing "Enter"
