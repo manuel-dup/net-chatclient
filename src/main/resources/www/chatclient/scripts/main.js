@@ -9,11 +9,13 @@
         return new Date(timestamp).toLocaleTimeString();
     };
 
+    // afficher le pseudo
     var setNickname = function(nickname) {
        $('#nickname').text(nickname);
        socket.send(JSON.stringify({type: 'nickname', nickname: nickname}));
     };
 
+    // faire défiler la conversation jusqu'en bas
     var scrollConversationToBottom = function() {
         var conversation = $('#conversation')[0];
         var height = conversation.scrollHeight;
@@ -22,6 +24,7 @@
         }
     };
 
+    // construire la ligne contenant le message
     var buildChatPhrase = function(message) {
         var time = $('<div></div>').addClass("col message-time").text("[" + dateTime(message.timestamp) + "]");
         var nick = $('<div></div>').addClass("col message-nickname").text(message.from + ":");
@@ -36,6 +39,7 @@
                         .append(msg));
     };
 
+    // envoyer un message vers le serveur
     var addMessageToConversation = function(message) {
         if (typeof message !== 'undefined' && message.length > 0) {
             socket.send(JSON.stringify({
@@ -45,11 +49,13 @@
         }
     };
 
+    // envoyer le message écrit
     var sendEnteredMessage = function() {
         addMessageToConversation($('#message').val());
         $('#message').val("");
     };
 
+    // modifier le pseudo
     var updateNickname = function() {
         var newNickname = $('#user-nickname').val();
 
@@ -70,21 +76,25 @@
         }
     };
 
+    // afficher le nombre de personnes connectées
     var setNbPersons = function(nbPersons) {
         $('#nb-personnes').text(nbPersons);
     };
 
+    // quelqu'un a quitté le chat
     var someoneLeft = function(data) {
         console.log(data.nickname, "left the chat");
         Materialize.toast('<b>' + data.nickname + '</b>&nbsp;est parti', 4000);
         setNbPersons(data.nbPersons);
     };
 
+    // quelqu'un a rejoint le chat
     var someoneJoined = function(data) {
         Materialize.toast('<b>' + data.nickname + '</b>&nbsp;a rejoint le chat', 4000);
         setNbPersons(data.nbPersons);
     };
 
+    // afficher les messages précédents dans la conversation
     var initializeConversation = function(history) {
         var length = history.length;
         for (var i = 0 ; i < length ; i++) {
@@ -93,17 +103,20 @@
         scrollConversationToBottom();
     };
 
+    // quand on clique sur le bouton pour enregistrer son pseudo
     $('#user-info-submit').click(updateNickname);
+
     $('#user-nickname').keyup(function(event) {
-        // when pressing "Enter"
+        // quand on appuye sur "Entrée" en écrivant son pseudo
         if (event.which === 13) {
             updateNickname();
         }
     });
 
+    // quand on clique sur le bouton pour envoyer un message
     $('.send-message').click(sendEnteredMessage);
     $('#message').keyup(function(event) {
-        // when pressing "Enter"
+        // quand on appuye sur "Entrée" en tapant un message
         if (event.which === 13) {
             sendEnteredMessage();
         }
@@ -114,7 +127,7 @@
         document.location.reload();
     });
 
-    // ------------- WebSocket stuff -------------
+    // ------------- Communications avec le serveur -------------
 
     var wsUrl;
     if (location.hostname === 'herge3.eptica.com') {
@@ -123,6 +136,7 @@
         wsUrl = "ws://" + location.hostname + ":8581/"
     }
 
+    // connexion avec le serveur
     socket = new WebSocket(wsUrl);
 
     socket.onopen = function(open){
@@ -172,6 +186,6 @@
         console.log("Server closed connection");
     }
 
-    // ------------- WebSocket stuff end -------------
+    // ------------- FIN Communications avec le serveur -------------
 })();
 
