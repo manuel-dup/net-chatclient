@@ -103,6 +103,11 @@
         scrollConversationToBottom();
     };
 
+    var reset = function() {
+        localStorage.clear();
+        document.location.reload();
+    };
+
     // quand on clique sur le bouton pour enregistrer son pseudo
     $('#user-info-submit').click(updateNickname);
 
@@ -122,10 +127,7 @@
         }
     });
     $('#user-info.modal').modal({dismissible: false});
-    $('#reset-app').click(function() {
-        localStorage.clear();
-        document.location.reload();
-    });
+    $('#reset-app').click(reset);
 
     // ------------- Communications avec le serveur -------------
 
@@ -169,6 +171,9 @@
 
         } else if (data.type === 'history') {
             initializeConversation(data.history);
+
+        } else if (data.type === 'reset') {
+            reset();
 
         } else {
             console.log("Unknown message type", data.type);
