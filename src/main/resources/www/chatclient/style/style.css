@@ -86,9 +86,9 @@
     content: "- ";
 }
 
-/* Screens lower than 700px */
+/* Screens lower than 800px */
 @media only screen and (min-device-width : 320px) and (max-device-width : 800px),
-       only screen and (max-width: 700px)
+       only screen and (max-width: 800px)
 {
     #logo {
         height: 45px;
