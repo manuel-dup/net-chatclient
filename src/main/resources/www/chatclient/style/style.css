@@ -54,7 +54,8 @@
 
 #nickname {
     margin-top: 10px;
-    width: 100%
+    width: 100%;
+    white-space: nowrap;
 }
 
 #nickname-wrapper {
@@ -83,36 +84,6 @@
 
 #liste-participants > .participant::before {
     content: "- ";
-}
-
-@media (min-device-width : 320px) and (max-device-width : 800px) and (orientation: portrait),
-       (max-width: 800px) and (orientation: portrait)
-{
-    html {
-        font-size: 30px;
-    }
-    
-    #nickname {
-        font-size: 28px;
-        height: 50px;
-        border-radius: 20px;
-        padding-top: 8px;
-    }
-    
-    #nickname-wrapper {
-        margin-top: 45px;
-    }
-    
-    .container {
-        width: 100%;
-        height: auto;
-    }
-    
-    .send-message.btn {
-        height: 70px;
-        padding-top: 20px;
-        margin-top: 10px;
-    }
 }
 
 /* Screens lower than 700px */
@@ -167,5 +138,39 @@
     
     #conversation .row {
         margin-left : 0
+    }
+}
+
+@media (min-device-width : 320px) and (max-device-width : 800px) and (orientation: portrait),
+       (max-width: 800px) and (orientation: portrait)
+{
+    html {
+        font-size: 30px;
+    }
+    
+    #nickname {
+        font-size: 28px;
+        height: 50px;
+        border-radius: 20px;
+        padding-top: 8px;
+    }
+    
+    #nickname-wrapper {
+        margin-top: 45px;
+    }
+    
+    .container {
+        width: 100%;
+        height: auto;
+    }
+    
+    .send-message.btn {
+        height: 70px;
+        padding-top: 20px;
+        margin-top: 10px;
+    }
+    
+    #logo {
+        height: 75px;
     }
 }
