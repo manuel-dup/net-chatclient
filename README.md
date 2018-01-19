@@ -12,7 +12,7 @@ docker run --rm --name netproject-chatclient -p 8580:80 registry.eptica.com/epti
 And check http://localhost:8580/ (or http://localhost:8580/chatclient)
 
 
-### Develop in the project
+### Develop in the project
 
 Run the Docker image with the following command:
 ```sh
