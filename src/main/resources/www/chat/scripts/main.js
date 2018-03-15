@@ -81,25 +81,38 @@
         $('#nb-personnes').text(nbPersons);
     };
 
-    // quelqu'un a quitté le chat
-    var someoneLeft = function(data) {
-        console.log(data.nickname, "left the chat");
-        Materialize.toast('<b>' + data.nickname + '</b>&nbsp;est parti', 4000);
-        setNbPersons(data.nbPersons);
+    var addParticipant = function (participant) {
+        var p = $("<div></div>").addClass("participant").text(participant);
+        $('#liste-participants').append(p);
+    };
+
+    var updateParticipants = function(participants) {
+        $('#liste-participants').html("");
+        participants.forEach(addParticipant);
     };
 
     // quelqu'un a rejoint le chat
     var someoneJoined = function(data) {
         Materialize.toast('<b>' + data.nickname + '</b>&nbsp;a rejoint le chat', 4000);
         setNbPersons(data.nbPersons);
+        updateParticipants(data.participants);
+    };
+
+    // quelqu'un a quitté le chat
+    var someoneLeft = function(data) {
+        console.log(data.nickname, "left the chat");
+        Materialize.toast('<b>' + data.nickname + '</b>&nbsp;est parti', 4000);
+        setNbPersons(data.nbPersons);
+        updateParticipants(data.participants);
     };
 
     // afficher les messages précédents dans la conversation
-    var initializeConversation = function(history) {
-        var length = history.length;
+    var initializeConversation = function(data) {
+        var length = data.history.length;
         for (var i = 0 ; i < length ; i++) {
-            $('#conversation').append(buildChatPhrase(history[i]));
+            $('#conversation').append(buildChatPhrase(data.history[i]));
         }
+        updateParticipants(data.participants);
         scrollConversationToBottom();
     };
 
@@ -170,7 +183,7 @@
             someoneLeft(data);
 
         } else if (data.type === 'history') {
-            initializeConversation(data.history);
+            initializeConversation(data);
 
         } else if (data.type === 'reset') {
             reset();

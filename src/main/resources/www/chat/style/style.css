@@ -82,6 +82,10 @@
     height: 50vh;
 }
 
+#participants > span {
+    font-weight: bold;
+}
+
 #liste-participants > .participant::before {
     content: "- ";
 }
@@ -93,7 +97,7 @@
     #logo {
         height: 45px;
     }
-    
+
     .mymessages > .col,
     .othersmessages > .col {
         border-width: 1px;
@@ -102,40 +106,40 @@
         border-radius: 4px;
         padding: 0px;
     }
-    
+
     .col.mymessages {
         float: right;
     }
-    
+
     .mymessages > .message-nickname {
         display: none;
     }
-    
+
     .mymessages > .message-time {
         float: right;
     }
-    
+
     .mymessages > .message-content {
         border-color: RoyalBlue;
         background-color: CornflowerBlue;
     }
-    
+
     .othersmessages > .message-content {
         border-color: ForestGreen;
         background-color: #35CF6C;
     }
-    
+
     #conversation .col {
         padding-top: 3px;
         padding-bottom: 3px;
     }
-    
+
     #conversation .col.message-content {
         padding-right: 5px;
         padding-left: 5px;
         color: white
     }
-    
+
     #conversation .row {
         margin-left : 0
     }
@@ -147,29 +151,29 @@
     html {
         font-size: 30px;
     }
-    
+
     #nickname {
         font-size: 28px;
         height: 50px;
         border-radius: 20px;
         padding-top: 8px;
     }
-    
+
     #nickname-wrapper {
         margin-top: 45px;
     }
-    
+
     .container {
         width: 100%;
         height: auto;
     }
-    
+
     .send-message.btn {
         height: 70px;
         padding-top: 20px;
         margin-top: 10px;
     }
-    
+
     #logo {
         height: 75px;
     }
